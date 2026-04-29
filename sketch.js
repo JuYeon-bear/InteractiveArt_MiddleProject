@@ -65,10 +65,10 @@ function draw() {
   if (keyIsDown(DOWN_ARROW)&&isWall(px, py + 3)) py += 3;
 
   //반대쪽 통로로 나오기
-  if (px <= 10){
+  if (px <= 15){
     px = 1385;
   } else if (px >= 1390){
-    px = 15;
+    px = 20;
   }
 
   //팩맨 그리기
@@ -102,7 +102,9 @@ function draw() {
     let nextX = enemy.x + enemy.dirX;
     let nextY = enemy.y + enemy.dirY;
 
-    if (!isWall(nextX, nextY) || (enemy.dirX === 0 && enemy.dirY === 0)){
+    let changedir = random(100) < 3;
+
+    if (!isWall(nextX, nextY) || (enemy.dirX === 0 && enemy.dirY === 0) || changedir){
       let validDirs = [];
 
       if (isWall(enemy.x - 3, enemy.y)) validDirs.push({x: -3, y: 0});
