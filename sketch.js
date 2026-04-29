@@ -1,5 +1,5 @@
 function preload(){
-  map = londImage('Map.png');
+  map = loadImage('Map.png');
 }
 
 function setup() {
@@ -8,6 +8,5 @@ function setup() {
 }
 
 function draw() {
-  background(220);
   
 }
