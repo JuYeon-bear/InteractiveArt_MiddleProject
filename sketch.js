@@ -6,6 +6,9 @@ let wallR = 20;
 let wallG = 140;
 let wallB = 175;
 
+let dx = [207, 660, 745, 1195, 592, 810, 592, 810, 235, 704, 1165, 106, 1280];
+let dy = [60, 60, 60, 60, 310, 310, 455, 455, 700, 700, 700, 380, 380];
+
 function preload(){
   mapImg = loadImage('Map.png');
 }
@@ -28,12 +31,14 @@ function draw() {
   if (keyIsDown(UP_ARROW)&&isWall(px, py - 3)) py -= 3;
   if (keyIsDown(DOWN_ARROW)&&isWall(px, py + 3)) py += 3;
 
+  //반대쪽 통로로 나오기
   if (px <= 5){
     px = 1395;
   } else if (px >= 1400){
     px = 10;
   }
 
+  //팩맨 그리기
   fill(255, 255, 0);
   noStroke();
   ellipse(px, py, pd);
