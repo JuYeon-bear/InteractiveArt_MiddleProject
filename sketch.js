@@ -1,5 +1,5 @@
 let px, py;
-let pd = 10;
+let pd = 20;
 
 function preload(){
   map = loadImage('Map.png');
@@ -8,10 +8,14 @@ function preload(){
 function setup() {
   //크기가 커서 줄임
   createCanvas(1408, 768);
-  image(map, 0, 0, 1408, 768);
+  px = 704;
+  py = 384;
 }
 
 function draw() {
+  image(map, 0, 0, 1408, 768);
+
+  //팩맨 움직임
   if (keyIsDown(LEFT_ARROW)) px -= 3;
   if (keyIsDown(RIGHT_ARROW)) px += 3;
   if (keyIsDown(UP_ARROW)) py -= 3;
