@@ -13,6 +13,7 @@ function setup() {
 }
 
 function draw() {
+  //맵 그리기
   image(map, 0, 0, 1408, 768);
 
   //팩맨 움직임
@@ -23,6 +24,9 @@ function draw() {
 
   fill(255, 255, 0);
   ellipse(px, py, pd);
+  
+
+
 
 }
 
