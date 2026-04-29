@@ -27,7 +27,7 @@ function setup() {
   createCanvas(1408, 768);
   mapImg.resize(1408, 768);
   px = 704;
-  py = 384;
+  py = 455;
 
   //적 배치 위치 찾기
   enemyXY(enemiesCount);
@@ -109,7 +109,7 @@ function draw() {
       life -= 1;
       //연속 충돌 방지 리스폰
       px = 704;
-      py = 384;
+      py = 455;
     }
   }
 
