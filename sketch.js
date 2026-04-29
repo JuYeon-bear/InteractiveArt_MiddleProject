@@ -62,7 +62,6 @@ function draw() {
 
     if (distance < (pd/2) + (dSize / 2)){
       dActive[i] = false;
-      score += 10
     }
   }
 
