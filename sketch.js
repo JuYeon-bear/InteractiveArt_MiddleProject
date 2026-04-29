@@ -1,6 +1,6 @@
 let mapImg;
 let px, py;
-let pd = 20;
+let pd = 25;
 
 let wallR = 20;
 let wallG = 140;
@@ -120,10 +120,10 @@ function draw() {
       }
     }
 
-    if (enemy.x <= 5){
-      enemy.x = 1395;
-    } else if (enemy.x >= 1400){
-      enemy.x = 10;
+    if (enemy.x <= 20){
+      enemy.x = 1375;
+    } else if (enemy.x >= 1380){
+      enemy.x = 25;
     }
 
     enemy.x += enemy.dirX;
