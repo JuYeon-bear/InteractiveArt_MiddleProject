@@ -11,7 +11,7 @@ let dy = [60, 60, 60, 60, 310, 310, 455, 455, 700, 700, 700, 380, 380];
 let dSize = 15;
 let dActive = [true, true, true, true, true, true, true, true, true, true, true, true, true];
 
-let score = 0;
+let score;
 let life = 3;
 
 function preload(){
@@ -31,6 +31,7 @@ function draw() {
   image(mapImg, 0, 0);
   fill(255, 255, 255);
   textSize(20);
+  totalScore();
   text("SCORE: "+score, 20, 40);
   text("LIFE: "+life, 20, 80);
 
@@ -52,7 +53,7 @@ function draw() {
   noStroke();
   ellipse(px, py, pd);
 
-  for (let i = 0; i < length.dActive(); i++){
+  for (let i = 0; i < dActive.length; i++){
     if (dActive[i] === true){
       fill(255, 100, 100);
       ellipse(dx[i], dy[i], dSize);
@@ -68,7 +69,16 @@ function draw() {
 
 }
 
+function totalScore(){
+  score = 0;
+  for (let i = 0; i < dActive.length; i++){
+    if (dActive[i] === false){
+      score += 10;
+    }
+  }
 
+  return score;
+}
 
 function isWall(nextX, nextY){
   let r = pd / 2;
