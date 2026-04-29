@@ -15,6 +15,8 @@ let stage = 1;
 let score;
 let life = 3;
 
+let enemies = [];
+
 function preload(){
   mapImg = loadImage('Map.png');
 }
@@ -25,6 +27,43 @@ function setup() {
   mapImg.resize(1408, 768);
   px = 704;
   py = 384;
+
+  //적 배치
+  for (let i = 0; i < 5; i++){
+    let spawnFound = false;
+    let spawnX, spawnY;
+
+    while (!spawnFound){
+      let randomIndex = floor(random(dActive.length));
+      let targetX = dx[randomIndex];
+      let targetY = dy[randomIndex];
+
+      let possibleSpots = [
+        {x: targetX + 25, y: targetY},
+        {x: targetX - 25, y: targetY},
+        {x: targetX, y: targetY + 25},
+        {x: targetX, y: targetY - 25}
+      ]
+
+      let validSpots = [];
+
+      for (let j = 0; j < possibleSpots,length; j++){
+        let spot = possibleSpots[j];
+        if (isWall(spot.x, spot.y)){
+          validSpots.push(spot);
+        }
+      }
+
+      if (validSpots.length > 0){
+        let finalSpot = random(validSpots);
+        spawnX = finalSpot.x;
+        spawnY = finalSpot.y;
+        spawnFound = true;
+      }
+    }
+
+    enemies.push({x: spawnX, y: spawnY})
+  }
 }
 
 function draw() {
@@ -42,6 +81,7 @@ function draw() {
   //   textAlign(CENTER, CENTER);
   //   text("YOU WIN", 704, 384);
   // }
+
   //맵 그리기
   image(mapImg, 0, 0);
   fill(255, 255, 255);
@@ -69,6 +109,7 @@ function draw() {
   noStroke();
   ellipse(px, py, pd);
 
+  //콩 그리기
   for (let i = 0; i < dActive.length; i++){
     if (dActive[i] === true){
       fill(255, 100, 100);
