@@ -11,6 +11,7 @@ let dy = [60, 60, 60, 60, 310, 310, 455, 455, 700, 700, 700, 380, 380, 380, 380]
 let dSize = 15;
 let dActive = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
 
+let stage = 1;
 let score;
 let life = 3;
 
@@ -27,6 +28,20 @@ function setup() {
 }
 
 function draw() {
+  // if (life <= 0){
+  //   fill(255, 0, 0);
+  //   textSize(100);
+  //   textAlign(CENTER, CENTER);
+  //   text("YOU LOSE", 704, 384);
+  //   noLoop();
+  //   return;
+  // } else if(score == dActive.length * stage) {
+  //   stage += 1;
+  //   fill(255, 0, 0);
+  //   textSize(100);
+  //   textAlign(CENTER, CENTER);
+  //   text("YOU WIN", 704, 384);
+  // }
   //맵 그리기
   image(mapImg, 0, 0);
   fill(255, 255, 255);
@@ -34,6 +49,7 @@ function draw() {
   totalScore();
   text("SCORE: "+score, 20, 40);
   text("LIFE: "+life, 20, 80);
+  text("STAGE: "+stage, 20, 120);
 
   //팩맨 움직임
   if (keyIsDown(LEFT_ARROW)&&isWall(px - 3, py)) px -= 3;
