@@ -102,7 +102,7 @@ function draw() {
     let nextX = enemy.x + enemy.dirX;
     let nextY = enemy.y + enemy.dirY;
 
-    let changedir = random(100) < 3;
+    let changedir = random(100) < 4.5;
 
     if (!isWall(nextX, nextY) || (enemy.dirX === 0 && enemy.dirY === 0) || changedir){
       let validDirs = [];
