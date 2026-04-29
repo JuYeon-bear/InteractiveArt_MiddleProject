@@ -8,6 +8,10 @@ let wallB = 175;
 
 let dx = [207, 660, 745, 1195, 592, 810, 592, 810, 235, 704, 1165, 106, 1280];
 let dy = [60, 60, 60, 60, 310, 310, 455, 455, 700, 700, 700, 380, 380];
+let dSize = 15;
+let dActive = [true, true, true, true, true, true, true, true, true, true, true, true, true];
+
+let score = 0;
 
 function preload(){
   mapImg = loadImage('Map.png');
