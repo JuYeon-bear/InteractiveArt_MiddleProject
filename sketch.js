@@ -66,8 +66,8 @@ function draw() {
 
   //반대쪽 통로로 나오기
   if (px <= 10){
-    px = 1395;
-  } else if (px >= 1400){
+    px = 1385;
+  } else if (px >= 1390){
     px = 15;
   }
 
