@@ -1,8 +1,13 @@
+function preload(){
+  map = londImage('Map.png');
+}
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(2816, 1536);
+  image(map, 0, 0);
 }
 
 function draw() {
   background(220);
-  text("HELLO WORLD");
+  
 }
