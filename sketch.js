@@ -65,10 +65,10 @@ function draw() {
   if (keyIsDown(DOWN_ARROW)&&isWall(px, py + 3)) py += 3;
 
   //반대쪽 통로로 나오기
-  if (px <= 5){
+  if (px <= 10){
     px = 1395;
   } else if (px >= 1400){
-    px = 10;
+    px = 15;
   }
 
   //팩맨 그리기
@@ -99,24 +99,35 @@ function draw() {
   for (let i = 0; i < enemies.length; i++){
     let enemy = enemies[i];
 
-    let nextX = enemy.x + 3;
-    let nextY = enemy.y + 3;
+    let nextX = enemy.x + enemy.dirX;
+    let nextY = enemy.y + enemy.dirY;
 
-    let randomEnemyIndex = floor(random(4));
-    switch(randomEnemyIndex){
-      case 0: //왼쪽
-        break;
-      case 1: //오른쪽
-        break;
-      case 2: //위쪽
-        break;
-      case 3: //아래쪽
-        break;
+    if (!isWall(nextX, nextY) || (enemy.dirX === 0 && enemy.dirY === 0)){
+      let validDirs = [];
+
+      if (isWall(enemy.x - 3, enemy.y)) validDirs.push({x: -3, y: 0});
+      if (isWall(enemy.x + 3, enemy.y)) validDirs.push({x: 3, y: 0});
+      if (isWall(enemy.x, enemy.y - 3)) validDirs.push({x: 0, y: -3});
+      if (isWall(enemy.x, enemy.y + 3)) validDirs.push({x: 0, y: 3});
+
+      if (validDirs.length > 0){
+        let randomDir = random(validDirs);
+        enemy.dirX = randomDir.x;
+        enemy.dirY = randomDir.y;
+      } else {
+        enemy.dirX = 0;
+        enemy.dirY = 0;
+      }
     }
 
-    if (!isWall(nextX, nextY)){
-
+    if (enemy.x <= 5){
+      enemy.x = 1395;
+    } else if (enemy.x >= 1400){
+      enemy.x = 10;
     }
+
+    enemy.x += enemy.dirX;
+    enemy.y += enemy.dirY;
 
     fill(255, 0, 0);
     noStroke();
@@ -209,7 +220,7 @@ function enemyXY(count){
       }
     }
 
-    enemies.push({x: spawnX, y: spawnY})
+    enemies.push({x: spawnX, y: spawnY, dirX: 0, dirY: 0})
   }
 }
 
