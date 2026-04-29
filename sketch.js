@@ -35,6 +35,18 @@ function setup() {
 }
 
 function draw() {
+  //맵 그리기
+  image(mapImg, 0, 0);
+  fill(255, 255, 255);
+  textSize(20);
+  totalScore();
+  let score_total = score + (stage-1)*dActive.length*10;
+  textAlign(LEFT, BASELINE);
+  text("SCORE: "+score_total, 40, 40);
+  text("LIFE: "+life, 40, 80);
+  text("STAGE: "+stage, 40, 120);
+
+  //게임오버 및 재시작
   if (life <= 0){
     fill(255, 255, 255);
     textSize(80);
@@ -63,17 +75,6 @@ function draw() {
 
     return;
   }
-
-  //맵 그리기
-  image(mapImg, 0, 0);
-  fill(255, 255, 255);
-  textSize(20);
-  totalScore();
-  let score_total = score + (stage-1)*dActive.length*10;
-  textAlign(LEFT, BASELINE);
-  text("SCORE: "+score_total, 40, 40);
-  text("LIFE: "+life, 40, 80);
-  text("STAGE: "+stage, 40, 120);
 
   //팩맨 움직임
   if (keyIsDown(LEFT_ARROW)&&isWall(px - 3, py)) px -= 3;
