@@ -1,3 +1,6 @@
+let px, py;
+let pd = 10;
+
 function preload(){
   map = loadImage('Map.png');
 }
@@ -9,13 +12,13 @@ function setup() {
 }
 
 function draw() {
-  //중심점
-  stroke(255, 0, 0);
-  strokeWeight(1);
+  if (keyIsDown(LEFT_ARROW)) px -= 3;
+  if (keyIsDown(RIGHT_ARROW)) px += 3;
+  if (keyIsDown(UP_ARROW)) py -= 3;
+  if (keyIsDown(DOWN_ARROW)) py += 3;
 
-  //맵
-
-
+  fill(255, 255, 0);
+  ellipse(px, py, pd);
 
 }
 
